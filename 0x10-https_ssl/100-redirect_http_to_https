@@ -33,19 +33,19 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend  www.thomanuel-frontend-http
+frontend  thomanuel-frontend-http
         bind *:80
         mode http
 	http-request set-header X-Forwarded-Proto http
-        default_backend www.thomanuel-backend
+        default_backend thomanuel-backend
 
-frontend www.thomanuel-frontend-https
+frontend thomanuel-frontend-https
 	bind *:443 ssl crt /etc/haproxy/certs/www.thomanuel.tech.pem
 	http-request set-header X-Forwarded-Proto https
 	http-request redirect scheme https code 301 unless { ssl_fc }
-	default_backend www.thomanuel-backend
+	default_backend thomanuel-backend
 
-backend www.thomanuel-backend
+backend thomanuel-backend
         balance roundrobin
         server 136654-web-01 100.26.170.8:80 check
         server 136654-web-02 100.25.148.113:80 check
