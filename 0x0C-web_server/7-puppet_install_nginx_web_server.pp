@@ -14,7 +14,7 @@ file {'/var/www/html/index.html':
 }
 
 exec {'redirect_me':
-	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=wfWxdh-_k_4 permanent;" /etc/nginx/sites-available/default',
+	command => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=kUMe1FH4CHE permanent;" /etc/nginx/sites-available/default',
 	provider => 'shell'
 }
 
@@ -22,3 +22,4 @@ service {'nginx':
 	ensure => running,
 	require => Package['nginx']
 }
+
