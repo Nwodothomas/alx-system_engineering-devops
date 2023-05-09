@@ -6,8 +6,8 @@ A great API to use for some practice is the Reddit API. There’s a lot of endpo
 
 # Resources
 ### Read or watch:
-	* [ Reddit API Documentation ] <Reddit API Documentation>
-	* [ Query String ] <Query String>
+	* [ # Reddit API Documentation ] (Reddit API Documentation)
+	* [ #Query String ] (Query String)
 
 # Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
