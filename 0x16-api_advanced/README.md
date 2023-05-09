@@ -7,6 +7,7 @@ A great API to use for some practice is the Reddit API. There’s a lot of endpo
 # Resources
 
 ## Read or watch:
+
 	* [Reddit API Documentation](#Reddit API Documentation)
 	* [Query String](#Query String)
 
