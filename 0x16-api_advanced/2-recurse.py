@@ -1,33 +1,28 @@
 #!/usr/bin/python3
 """
-Queries the Reddit API recursively and returns a list containing the titles of all hot articles for a given subreddit.
+Using reddit's API
 """
 import requests
+after = None
 
 
-def recurse(subreddit, hot_list=[], after=None):
-    """
-    Recursively retrieves the titles of all hot articles for a given subreddit and stores them in a list.
-    If the subreddit is invalid or no results are found, returns None.
-    """
+def recurse(subreddit, hot_list=[]):
+    """returning top ten post titles recursively"""
+    global after
+    user_agent = {'User-Agent': 'api_advanced-project'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    params = {'limit': 100, 'after': after}
-    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    parameters = {'after': after}
+    results = requests.get(url, params=parameters, headers=user_agent,
+                           allow_redirects=False)
 
-    if response.status_code == 200:
-        data = response.json().get('data', {})
-        children = data.get('children', [])
-        after = data.get('after')
-
-        for post in children:
-            title = post.get('data', {}).get('title')
-            if title:
-                hot_list.append(title)
-
-        if after:
-            recurse(subreddit, hot_list, after=after)
-        else:
-            return hot_list
+    if results.status_code == 200:
+        after_data = results.json().get("data").get("after")
+        if after_data is not None:
+            after = after_data
+            recurse(subreddit, hot_list)
+        all_titles = results.json().get("data").get("children")
+        for title_ in all_titles:
+            hot_list.append(title_.get("data").get("title"))
+        return hot_list
     else:
-        return None
+        return (None)
