@@ -28,6 +28,6 @@ frontend www.thomanuel-frontend-https
 
 backend www.thomanuel-backend
         balance roundrobin
-        server 136654-web-01 100.26.170.8:80 check
-        server 136654-web-02 100.25.148.113:80 check
+        server 136654-web-01 52.3.250.76:80 check
+        server 136654-web-02 54.160.96.210:80 check
 
